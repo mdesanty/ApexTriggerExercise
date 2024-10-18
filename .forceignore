@@ -1,0 +1,24 @@
+# List files or directories below to ignore them when running force:source:push, force:source:pull, and force:source:status
+# More information: https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_exclude_source.htm
+#
+
+package.xml
+
+# LWC configuration files
+**/jsconfig.json
+**/.eslintrc.json
+
+# LWC Jest
+**/__tests__/**
+
+# ActivatorSalesforce additions
+#
+# Ignoring Marketing Cloud WebLinks because they cause errors when pushing to a scratch org. For example:
+#
+# Contact.et4ae5__View_ExactTarget_Analytics  Cannot modify managed object: entity=WebLink, component=00b8c000003NbIH, field=Url, state=installed: newValue='alert("{!$Label.et4ae5__deprecateContactJSComponents}");', oldValue='alert("{!$Label.et4ae5__deprecatecontactjscomponents}");'
+**/objects/Account/WebLinks/et4ae5*
+**/objects/Contact/WebLinks/et4ae5*
+
+**/tsconfig.json
+
+**/*.ts

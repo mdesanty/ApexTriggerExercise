@@ -17,7 +17,9 @@ trigger trigger1 on Account (after update) {
                 accountToUpdate.phone = '000000000';  
             }
 
-            update accountsToUpdate;
+            if(loopCounter > 1) {
+               update accountsToUpdate;
+            }
         }
 
     }

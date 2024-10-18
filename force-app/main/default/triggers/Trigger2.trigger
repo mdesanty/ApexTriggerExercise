@@ -4,7 +4,7 @@ trigger Trigger2 on Account (after insert, after update) {
 
     For(Account account: Trigger.new) {
         if(account.Status__c == 'Deleted') {
-        accountsMarkedForDelete.add(account.Id);
+           accountsMarkedForDelete.add(account.Id);
         }
     }
 
@@ -13,8 +13,12 @@ trigger Trigger2 on Account (after insert, after update) {
 
     for( Contact contact : dealerContacts) {
 
-        if(contact.MailingState != 'MA') {
+        if(contact.MailingState == 'MA') {
             delete contact;
+        }
+        else {
+            contact.Description = Helper.formatDescription(contact.Description);
+            update contact;
         }
     }
 }
